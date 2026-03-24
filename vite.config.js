@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/mundial-econ-2026/',
+  base: '/mundial-econ-demov2/',
 })
