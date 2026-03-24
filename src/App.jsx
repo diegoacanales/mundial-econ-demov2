@@ -6,7 +6,7 @@ import PrediccionMundial from './pages/PrediccionMundial'
 
 const PAGES = [
   { path: '/encuesta', label: '🗳️ Encuesta', desc: '¿Quién ganará el Mundial 2026?', color: '#f59e0b', component: EncuestaMundial },
-  { path: '/prediccion', label: '🤖 Modelo Predictivo', desc: 'Construye tu propio modelo con variables económicas', color: '#3b82f6', component: PrediccionMundial },
+  { path: '/prediccion', label: '🤖 Modelo Predictivo', desc: '9 variables + simulador estocástico', color: '#3b82f6', component: PrediccionMundial },
   { path: '/fifa-hombres', label: '⚽ FIFA Hombres × Economía', desc: 'Ranking masculino vs variables macroeconómicas', color: '#22c55e', component: FIFAMenEconomics },
   { path: '/fifa-mujeres', label: '⚽ FIFA Mujeres × Economía', desc: 'Ranking femenino vs variables macroeconómicas', color: '#c084fc', component: FIFAWomenEconomics },
 ]

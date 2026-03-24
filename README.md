@@ -1,91 +1,76 @@
-# ⚽ Economía × FIFA — Demo Interactiva
+# ⚽ Economía × FIFA 2026 — Demo Interactiva (v2)
 
-Demo educativa para explorar la relación entre variables macroeconómicas y los rankings FIFA. Diseñada para estudiantes de preparatoria interesados en economía.
+Demo educativa para explorar la relación entre variables macroeconómicas y los rankings FIFA. Incluye modelo predictivo con 9 variables y simulador estocástico.
 
-## 🚀 Despliegue rápido (5 minutos)
+> **Nota:** Esta es la versión actualizada. El repo anterior (`mundial-econ-demo`) tenía 6 variables y sin simulador.
 
-### Paso 1: Crear el repositorio
+## 🚀 Despliegue (5 minutos)
 
 ```bash
-# En tu terminal, dentro de esta carpeta:
 git init
 git add .
-git commit -m "Demo Economía × FIFA"
+git commit -m "Economía × FIFA 2026 v2"
 git branch -M main
-git remote add origin https://github.com/TU_USUARIO/mundial-econ-demo.git
+git remote add origin https://github.com/TU_USUARIO/mundial-econ-2026.git
 git push -u origin main
 ```
 
-### Paso 2: Activar GitHub Pages
+Luego en GitHub → **Settings → Pages → Source: GitHub Actions**.
 
-1. Ve a **Settings → Pages** en tu repositorio
-2. En **Source**, selecciona **GitHub Actions**
-3. El workflow se ejecuta automáticamente con cada push
+Tu sitio: `https://TU_USUARIO.github.io/mundial-econ-2026/`
 
-### Paso 3: Acceder al sitio
-
-Tu sitio estará disponible en:
-```
-https://TU_USUARIO.github.io/mundial-econ-demo/
-```
-
-> ⚠️ **Importante**: Si cambias el nombre del repositorio, actualiza también el campo `base` en `vite.config.js`.
-
-## 📱 URLs directas para la sesión
-
-Comparte estas URLs con los estudiantes:
+## 📱 URLs para la sesión
 
 | Actividad | URL |
 |-----------|-----|
-| **Menú principal** | `https://TU_USUARIO.github.io/mundial-econ-demo/` |
-| **Encuesta** | `https://TU_USUARIO.github.io/mundial-econ-demo/#/encuesta` |
-| **Modelo predictivo** | `https://TU_USUARIO.github.io/mundial-econ-demo/#/prediccion` |
-| **FIFA Hombres** | `https://TU_USUARIO.github.io/mundial-econ-demo/#/fifa-hombres` |
-| **FIFA Mujeres** | `https://TU_USUARIO.github.io/mundial-econ-demo/#/fifa-mujeres` |
+| Menú principal | `https://TU_USUARIO.github.io/mundial-econ-2026/` |
+| Encuesta | `.../#/encuesta` |
+| Modelo predictivo | `.../#/prediccion` |
+| FIFA Hombres | `.../#/fifa-hombres` |
+| FIFA Mujeres | `.../#/fifa-mujeres` |
 
-> 💡 **Tip**: Genera un código QR para la URL de la encuesta y proyéctalo en clase.
+## 🏫 Guía para el instructor (40–50 min)
 
-## 🏫 Guía para el instructor
-
-### Secuencia sugerida (40-50 min)
-
-1. **Encuesta (5 min)** — Proyectar QR, estudiantes votan en su celular
-2. **Resultados + discusión (5 min)** — ¿Por qué votaron así? ¿Qué factores consideraron?
-3. **FIFA Hombres × Economía (10 min)** — Explorar variables, discutir correlaciones y outliers
-4. **FIFA Mujeres × Economía (10 min)** — Comparar con hombres, discutir rol de instituciones
-5. **Modelo Predictivo (15 min)** — Estudiantes ajustan pesos, experimentan con escenarios
+1. **Encuesta (5 min)** — QR en pantalla, votan en celular
+2. **Resultados + discusión (5 min)** — ¿Por qué votaron así?
+3. **FIFA Hombres × Economía (10 min)** — Scatter plots, correlaciones, outliers
+4. **FIFA Mujeres × Economía (10 min)** — Comparar con hombres, rol de instituciones
+5. **Modelo Predictivo (15 min)** — Ajustar pesos, probar escenarios, simular torneos con ε
 6. **Cierre (5 min)** — ¿Coincidió el modelo con la encuesta? ¿Qué variables faltan?
 
-### Preguntas clave para la discusión
+### Momento clave: el simulador
 
-- ¿Puede el dinero comprar goles?
-- ¿Por qué Uruguay (3.5M hab) es mejor que India (1,400M)?
-- ¿Qué explica que EE.UU. sea #2 en mujeres pero #16 en hombres?
-- ¿Qué pasa si un modelo solo usa PIB? ¿Qatar gana el mundial?
-- ¿Qué variables importantes no están en nuestro modelo?
+- Con ε = 0%: siempre gana el mismo equipo → modelo determinista
+- Con ε = 30%: empiezan las sorpresas → la realidad
+- Con ε = 70%: casi cualquiera gana → ¿sirve el modelo?
+
+Eso es literalmente la diferencia entre R² alto y bajo, sin una sola ecuación.
+
+## 📊 Variables del modelo predictivo (9)
+
+| Variable | Fuente | Concepto económico |
+|----------|--------|--------------------|
+| Ranking FIFA | FIFA (Ene 2026) | Productividad revelada |
+| PIB per cápita | World Bank | Riqueza nacional |
+| Población | World Bank | Dotación de factores |
+| IDH | UNDP | Capital humano agregado |
+| Historial mundialista | FIFA | Path dependence |
+| Ventaja de local | — | Externalidades geográficas |
+| Liga doméstica (IFFHS) | IFFHS 2025 | Ecosistema competitivo |
+| Valor del plantel | Transfermarkt (Nov 2025) | Capital humano futbolístico |
+| Fútbol = deporte #1 | — | Preferencias reveladas |
 
 ## 🔧 Desarrollo local
 
 ```bash
 npm install
-npm run dev     # Servidor local en http://localhost:5173
-npm run build   # Generar build de producción
+npm run dev
+npm run build
 ```
 
 ## ⚠️ Nota sobre la encuesta
 
-La encuesta usa `localStorage` del navegador. Esto significa que:
-- Los votos se guardan **por dispositivo/navegador** (no en un servidor central)
-- Para ver resultados agregados del salón, se necesitaría un backend (Firebase, Supabase, etc.)
-- Para la demo en clase, una alternativa es proyectar la encuesta y que los estudiantes voten a mano alzada mientras tú registras
-
-Si se requiere votación en tiempo real con múltiples dispositivos, se puede migrar a Firebase Realtime Database con pocos cambios.
-
-## 📊 Fuentes de datos
-
-- Rankings FIFA: [inside.fifa.com](https://inside.fifa.com/fifa-world-ranking) (Ene/Dic 2025)
-- PIB per cápita, Población, Gini: [World Bank](https://data.worldbank.org/)
-- IDH, Esperanza de vida: [UNDP](https://hdr.undp.org/)
+Usa `localStorage` (votos por dispositivo). Para votación real multi-dispositivo, migrar a Firebase Realtime Database.
 
 ---
 
